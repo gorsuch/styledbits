@@ -1,4 +1,6 @@
 Styledbits::Application.routes.draw do
+  resources :users
+
   resources :accounts
 
   # The priority is based upon order of creation:
