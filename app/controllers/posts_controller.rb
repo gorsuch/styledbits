@@ -2,8 +2,8 @@ class PostsController < AuthenticatedController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = get_user.account.posts
-
+    @posts = get_user.account.posts.order('created_at DESC')
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }

@@ -1,0 +1,4 @@
+<div class="post">
+<p><a href='<%= url_for(post_path(post))%>'>Posted</a> by <%= post.user.email %></p>
+<pre><%=h post.body%></pre>
+</div>
