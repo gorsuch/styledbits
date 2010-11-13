@@ -8,11 +8,19 @@ class MainController < ApplicationController
       if result.successful?
         # Succesfully logged in
   	    # email = get_email(registration)
-  	    redirect_to(posts_path)
+  	    raise get_email(registration)
       else
   	    # Failed to login
   	    raise 'nope'
       end
     end
   end
+  
+  private 
+  
+  def get_email(registration)
+    ax_response = OpenID::AX::FetchResponse.from_success_response(request.env[Rack::OpenID::RESPONSE])
+    ax_response.data["http://axschema.org/contact/email"].first
+  end
+  
 end
