@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   def index
-    redirect_to(login_url(params[:domain])) if params[:domain]
+    redirect_to(login_path(params[:domain])) if params[:domain]
   end
   
   def login
@@ -8,7 +8,7 @@ class MainController < ApplicationController
       if result.successful?
         # Succesfully logged in
   	    # email = get_email(registration)
-  	    raise 'yup'
+  	    redirect_to(posts_path)
       else
   	    # Failed to login
   	    raise 'nope'
