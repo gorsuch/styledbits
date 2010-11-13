@@ -1,8 +1,8 @@
-class PostsController < ApplicationController
+class PostsController < AuthenticatedController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
+    @posts = get_user.account.posts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id])
+    @post = get_user.account.posts.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
+    @post = get_user.account.posts.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +34,15 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = get_user.account.posts.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new(params[:post])
+    @post = get_user.account.posts.new(params[:post])
+    @post.user = get_user
+    @post.account = get_user.account
 
     respond_to do |format|
       if @post.save
@@ -56,7 +58,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    @post = Post.find(params[:id])
+    @post = get_user.account.posts.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -72,7 +74,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    @post = Post.find(params[:id])
+    @post = get_user.account.posts(params[:id])
     @post.destroy
 
     respond_to do |format|
