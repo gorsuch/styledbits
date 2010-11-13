@@ -1,4 +1,8 @@
 Styledbits::Application.routes.draw do
+  get "main/index"
+
+  get "main/login"
+
   resources :posts
 
   resources :users
@@ -54,11 +58,14 @@ Styledbits::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
-
+  root :to => "main#index"
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  
+  match 'login/:domain' => 'main#login', :constraints => { :domain =>  /[a-zA-Z0-9\-\.]+/ }, :as => :login
+  
 end

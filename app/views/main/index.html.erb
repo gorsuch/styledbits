@@ -1,0 +1,7 @@
+<h1>Get Started!</h1>
+<p style="color: green"><%=flash[:notice]%></p>
+<p>Enter your domain in the form below to get started:</p>
+<%= form_tag(root_path) do %>
+	<%= text_field_tag('domain') %>
+	<%= submit_tag('Go!') %>
+<% end %>
