@@ -5,8 +5,11 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+<link href="/prettify/prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/prettify/prettify.js"></script>
+
 </head>
-<body>
+<body onload="prettyPrint()">
 
 <%= yield %>
 
