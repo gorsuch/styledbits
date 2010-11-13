@@ -25,7 +25,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'ruby-openid'
 gem 'rack-openid'
 gem 'ruby-openid-apps-discovery'
-require 'gapps_openid'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
