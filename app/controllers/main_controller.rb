@@ -1,7 +1,11 @@
 class MainController < ApplicationController
   def index
     redirect_to(posts_path) if session[:user_id]
-    redirect_to(login_path(params[:domain])) if params[:domain]
+    if request.post?
+      domain = params[:domain]
+      domain.gsub!(/.*@/,'')
+      redirect_to(login_path(domain)) 
+    end
   end
   
   def login
