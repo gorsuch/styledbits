@@ -4,7 +4,7 @@ class AuthenticatedController < ApplicationController
   protected
   def get_user
     begin
-      user = User.find(session[:user_id])
+      @user = User.find(session[:user_id])
     rescue ActiveRecord::RecordNotFound
       redirect_to(root_path)
     end

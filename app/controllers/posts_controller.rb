@@ -2,7 +2,7 @@ class PostsController < AuthenticatedController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = get_user.account.posts.order('created_at DESC')
+    @posts = @user.account.posts.order('created_at DESC')
     
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class PostsController < AuthenticatedController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = get_user.account.posts.find(params[:id])
+    @post = @user.account.posts.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class PostsController < AuthenticatedController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = get_user.account.posts.new
+    @post = @user.account.posts.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,15 +34,15 @@ class PostsController < AuthenticatedController
 
   # GET /posts/1/edit
   def edit
-    @post = get_user.account.posts.find(params[:id])
+    @post = @user.account.posts.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.xml
   def create
-    @post = get_user.account.posts.new(params[:post])
-    @post.user = get_user
-    @post.account = get_user.account
+    @post = @user.account.posts.new(params[:post])
+    @post.user = @user
+    @post.account = @user.account
 
     respond_to do |format|
       if @post.save
