@@ -15,7 +15,8 @@ class MainController < ApplicationController
   	    redirect_to(posts_path)
       else
   	    # Failed to login
-  	    raise 'could not log you in'
+  	    flash[:notice] = "Could not log you in."
+  	    render :index
       end
     end
   end
