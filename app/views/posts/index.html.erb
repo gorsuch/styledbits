@@ -1,5 +1,5 @@
 <h1><%= @user.account.domain %>'s pastebin</h1>
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'new post', new_post_path %> | <%= link_to 'logout', logout_path %>
 <% @posts.each do |post| %>
 	<%= render :partial => 'post', :locals => { :post => post } %>
 <% end %>

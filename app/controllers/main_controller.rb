@@ -21,6 +21,11 @@ class MainController < ApplicationController
     end
   end
   
+  def logout
+    session.clear
+    redirect_to(root_path)
+  end
+  
   private 
   
   def get_email(registration)

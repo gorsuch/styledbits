@@ -68,4 +68,6 @@ Styledbits::Application.routes.draw do
   
   match 'login/:domain' => 'main#login', :constraints => { :domain =>  /[a-zA-Z0-9\-\.]+/ }, :as => :login
   
+  match 'logout' => 'main#logout', :as => :logout
+  
 end
